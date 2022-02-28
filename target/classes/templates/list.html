@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+
+    <form id="filter-form">
+        <h2>Filter reviews</h2>
+        <div class="form-group">
+            <label for="byRating">Order by rating</label>
+            <select id="byRating" class="form-control-lg" name="sortByRating">
+                <option>Highest First</option>
+                <option>Lowest First</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="minRating">Minimum rating</label>
+            <select id="minRating" class="form-control-lg" name="minRating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="byDate">Order by date</label>
+            <select id="byDate" class="form-control-lg" name="sortByDate">
+                <option>Oldest First</option>
+                <option>Newest First</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="byText">Prioritize by text</label>
+            <select id="byText" class="form-control-lg" name="prioritize">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <button id="filter" type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
+    <h2>Reviews</h2>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table stripped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Review ID</th>
+                            <th scope="col">Review Full Text</th>
+                            <th scope="col">Review Text</th>
+                            <th scope="col">Number of Likes</th>
+                            <th scope="col">Number of Comments</th>
+                            <th scope="col">Number of Shares</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Review Created On</th>
+                            <th scope="col">Review Created On Date</th>
+                            <th scope="col">Review Created On Time</th>
+                            <th scope="col">Reviewer ID</th>
+                            <th scope="col">Reviewer URL</th>
+                            <th scope="col">Reviewer Name</th>
+                            <th scope="col">Reviewer Email</th>
+                            <th scope="col">Source Type</th>
+                            <th scope="col">Verified</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Source Name</th>
+                            <th scope="col">Source ID</th>
+                            <th scope="col">Tags</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Logo</th>
+                            <th scope="col">Photos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="review : ${reviews}" class="review" style="text-align: center">
+                            <td th:text="${review.getReviewId()}"></td>
+                            <td th:text="${review.getReviewFullText()}"></td>
+                            <td th:text="${review.getReviewText()}"></td>
+                            <td th:text="${review.getNumLikes()}"></td>
+                            <td th:text="${review.getNumComments()}"></td>
+                            <td th:text="${review.getNumShares()}"></td>
+                            <td th:text="${review.getRating()}"></td>
+                            <td th:text="${review.getReviewCreatedOn()}"></td>
+                            <td th:text="${review.getReviewCreatedOnDate()}"></td>
+                            <td th:text="${review.getReviewCreatedOnTime()}"></td>
+                            <td th:text="${review.getReviewerId()}"></td>
+                            <td th:text="${review.getReviewerUrl()}"></td>
+                            <td th:text="${review.getReviewerName()}"></td>
+                            <td th:text="${review.getReviewerEmail()}"></td>
+                            <td th:text="${review.getSourceType()}"></td>
+                            <td th:text="${review.isVerified()}"></td>
+                            <td th:text="${review.getSource()}"></td>
+                            <td th:text="${review.getSourceName()}"></td>
+                            <td th:text="${review.getSourceId()}"></td>
+<!--                            <td th:text="${review.getTags() != null} ? ${review.getTags()} : ''"></td>-->
+                            <td th:text="${review.getHref()}"></td>
+                            <td th:text="${review.getLogoHref()}"></td>
+<!--                            <td th:text="${review.getPhotos() != null} ? ${review.getPhotos()} : ''"></td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
